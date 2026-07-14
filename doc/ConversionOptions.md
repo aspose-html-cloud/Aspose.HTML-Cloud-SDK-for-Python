@@ -12,16 +12,17 @@
 | **jpegquality**  | int   | Quality in percent                                           | Optional |
 | **background**   | str   | CSS background like '#FF0000'. For conversion from SVG only  | Optional |
 
-### ImageOptions for JPEG, BMP, PNG, TIFF, GIF formats
-| Field            | Type | Description                                                 | Note     |
-|------------------|------|-------------------------------------------------------------|----------|
-| **width**        | int  | Width in pixel                                              | Optional |
-| **height**       | int  | Height in pixel                                             | Optional |
-| **leftmargin**   | int  | Left margin in pixel                                        | Optional |
-| **rightmargin**  | int  | Right margin in pixel                                       | Optional |
-| **topmargin**    | int  | Top margin in pixel                                         | Optional |
-| **bottommargin** | int  | Bottom margin in pixel                                      | Optional |
-| **background**   | str  | CSS background like '#FF0000'. For conversion from SVG only | Optional |
+### ImageOptions for JPEG, BMP, PNG, TIFF, GIF, WEBP formats
+| Field            | Type | Description                                                                                    | Note     |
+|------------------|------|------------------------------------------------------------------------------------------------|----------|
+| **width**        | int  | Width in pixel                                                                                 | Optional |
+| **height**       | int  | Height in pixel                                                                                | Optional |
+| **leftmargin**   | int  | Left margin in pixel                                                                           | Optional |
+| **rightmargin**  | int  | Right margin in pixel                                                                          | Optional |
+| **topmargin**    | int  | Top margin in pixel                                                                            | Optional |
+| **bottommargin** | int  | Bottom margin in pixel                                                                         | Optional |
+| **resolution**   | int  | DPI of rendered image. Default 96. Higher values produce larger pixel dimensions.              | Optional |
+| **background**   | str  | CSS background like '#FF0000'. For conversion from SVG only                                    | Optional |
 
 ### XPSOptions
 | Field            | Type  | Description                                                  | Note     |

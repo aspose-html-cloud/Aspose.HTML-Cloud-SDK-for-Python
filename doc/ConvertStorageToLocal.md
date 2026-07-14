@@ -17,6 +17,7 @@ Possible conversions:
 | **output_file**  | str                                       | Full path to output file with extension |
 | **storage_name** | str                                       | User's storage name. None if default    |
 | **options**      | [ConversionOptions](ConversionOptions.md) | Conversion options (optional)           |
+| **pdf_metadata** | [PdfMetadata](PdfMetadata.md)             | PDF /Info metadata (only used when target is PDF) (optional) |
 
 ### 
 

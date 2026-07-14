@@ -61,13 +61,14 @@ class HtmlApi(object):
     ##########################################################
 
     @alias('convertLocalToLocal', 'ConvertLocalToLocal')
-    def convert_local_to_local(self, input_file, output_file, options=None):
+    def convert_local_to_local(self, input_file, output_file, options=None, pdf_metadata=None):
         """Convert a documents from the local file by its name to the specified formats.
         The result will be saved to the local path.
 
         :param str input_file: Full path to the input file for conversion. (required)
         :param str output_file: Resulting full path to the result file. (required)
         :param object options: Options for conversion. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -77,11 +78,12 @@ class HtmlApi(object):
             dest_in_local=True,
             is_url=False,
             options=options,
-            storage_name=None
+            storage_name=None,
+            pdf_metadata=pdf_metadata
         )
 
     @alias('convertLocalToStorage', 'ConvertLocalToStorage')
-    def convert_local_to_storage(self, input_file, output_file, storage_name, options=None):
+    def convert_local_to_storage(self, input_file, output_file, storage_name, options=None, pdf_metadata=None):
         """Convert a documents from the local file by its name to the specified formats.
         The result will be saved to the storage.
 
@@ -89,6 +91,7 @@ class HtmlApi(object):
         :param str output_file: Resulting full path to the result file. (required)
         :param str storage_name: Name of the storage. None if it has default name.
         :param object options: Options for conversion. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -98,11 +101,12 @@ class HtmlApi(object):
             dest_in_local=False,
             is_url=False,
             options=options,
-            storage_name=storage_name
+            storage_name=storage_name,
+            pdf_metadata=pdf_metadata
         )
 
     @alias('convertStorageToLocal', 'ConvertStorageToLocal')
-    def convert_storage_to_local(self, input_file, output_file, storage_name, options=None):
+    def convert_storage_to_local(self, input_file, output_file, storage_name, options=None, pdf_metadata=None):
         """Convert a documents from the storage file by its name to the specified formats.
         The result will be saved to the local path.
 
@@ -110,6 +114,7 @@ class HtmlApi(object):
         :param str output_file: Resulting full path to the result file. (required)
         :param str storage_name: Name of the storage. None if it has default name.
         :param object options: Options for conversion. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -119,11 +124,12 @@ class HtmlApi(object):
             dest_in_local=True,
             is_url=False,
             options=options,
-            storage_name=storage_name
+            storage_name=storage_name,
+            pdf_metadata=pdf_metadata
         )
 
     @alias('convertStorageToStorage', 'ConvertStorageToStorage')
-    def convert_storage_to_storage(self, input_file, output_file, storage_name, options=None):
+    def convert_storage_to_storage(self, input_file, output_file, storage_name, options=None, pdf_metadata=None):
         """Convert a documents from the storage file by its name to the specified formats.
         The result will be saved to the storage.
 
@@ -131,6 +137,7 @@ class HtmlApi(object):
         :param str output_file: Resulting full path to the result file. (required)
         :param object options: Options for conversion. (optional)
         :param str storage_name: Name of the storage. None if it has default name.
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -140,18 +147,20 @@ class HtmlApi(object):
             dest_in_local=False,
             is_url=False,
             options=options,
-            storage_name=storage_name
+            storage_name=storage_name,
+            pdf_metadata=pdf_metadata
         )
 
 
     @alias('convertUrlToLocal', 'ConvertUrlToLocal')
-    def convert_url_to_local(self, input_file, output_file, options=None):
+    def convert_url_to_local(self, input_file, output_file, options=None, pdf_metadata=None):
         """Convert the HTML documents from the URL to the specified formats.
         The result will be saved to the local path.
 
         :param str input_file: Input URL for conversion(html, epub formats). (required)
         :param str output_file: Resulting full path to the result file. (required)
         :param object options: Options for conversion. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -161,11 +170,12 @@ class HtmlApi(object):
             dest_in_local=True,
             is_url=True,
             options=options,
-            storage_name=None
+            storage_name=None,
+            pdf_metadata=pdf_metadata
         )
 
     @alias('convertStorageToStorage', 'ConvertStorageToStorage')
-    def convert_url_to_storage(self, input_file, output_file, storage_name, options=None):
+    def convert_url_to_storage(self, input_file, output_file, storage_name, options=None, pdf_metadata=None):
         """Convert the HTML documents from the URL to the specified formats.
         The result will be saved to the storage.
 
@@ -173,6 +183,7 @@ class HtmlApi(object):
         :param str output_file: Resulting full path to the result file. (required)
         :param str storage_name: Name of the storage. (optional)
         :param object options: Options for conversion. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info metadata applied when output is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         return self.convert(
@@ -182,7 +193,8 @@ class HtmlApi(object):
             dest_in_local=False,
             is_url=True,
             options=options,
-            storage_name=storage_name
+            storage_name=storage_name,
+            pdf_metadata=pdf_metadata
         )
 
     @alias('vectorizeLocalToLocal', 'VectorizeLocalToLocal')
@@ -308,7 +320,7 @@ class HtmlApi(object):
         return self.convert(src, dest, src_in_local, dest_in_local, False, options, storage_name)
 
     @alias('Convert')
-    def convert(self, src, dest, src_in_local, dest_in_local, is_url, options=None, storage_name=None):
+    def convert(self, src, dest, src_in_local, dest_in_local, is_url, options=None, storage_name=None, pdf_metadata=None):
         """Convert a document to the specified formats.
 
         :param str src: Full path to the input file or URL for conversion(html, epub formats). (required)
@@ -323,9 +335,10 @@ class HtmlApi(object):
         :param int options.rightmargin: Right resulting image margin. (optional)
         :param int options.topmargin: Top resulting image margin. (optional)
         :param int options.bottommargin: Bottom resulting image margin. (optional)
-        :param int options.resolution: Resolution of resulting image. (optional)
+        :param int options.resolution: DPI of rendered image output (PNG, JPEG, BMP, GIF, TIFF, WEBP). Default 96. Ignored for PDF/XPS/DOC/DOCX/MD/MHTML/HTML/SVG. (optional)
         :param int options.jpegquality: Compression of the result image. (optional)
         :param str storage_name: Name of the storage. (optional)
+        :param PdfMetadata pdf_metadata: PDF /Info dictionary metadata (title, author, subject, keywords, creator, producer, creationDate, modificationDate). Only meaningful when target format is PDF. (optional)
         :return: ConversionResult. If the method is called asynchronously, returns the request thread.
         """
         if src_in_local:
@@ -372,7 +385,7 @@ class HtmlApi(object):
         header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
 
         req_body = ConversionRequest(input_path=file_in_storage, storage_name=storage_name, output_file=out_file,
-                                     options=options)
+                                     options=options, pdf_metadata=pdf_metadata)
 
         result = self.api_client.call_api(
             '/html/conversion/{from}-{to}', 'POST',

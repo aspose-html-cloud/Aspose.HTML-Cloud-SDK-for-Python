@@ -16,6 +16,7 @@ Possible conversions:
 | **input_file**   | str                                       | Full path to input file for conversion  |
 | **output_file**  | str                                       | Full path to output file with extension |
 | **options**      | [ConversionOptions](ConversionOptions.md) | Conversion options (optional)           |
+| **pdf_metadata** | [PdfMetadata](PdfMetadata.md)             | PDF /Info metadata (only used when target is PDF) (optional) |
 
 
 ### Convert html file to pdf

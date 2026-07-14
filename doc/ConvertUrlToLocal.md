@@ -12,6 +12,7 @@ Possible conversions:
 | **input_file**   | str                                       | Address of a website                    |
 | **output_file**  | str                                       | Full path to output file with extension |
 | **options**      | [ConversionOptions](ConversionOptions.md) | Conversion options (optional)           |
+| **pdf_metadata** | [PdfMetadata](PdfMetadata.md)             | PDF /Info metadata (only used when target is PDF) (optional) |
 
 
 ### Convert a website to pdf and save result to the local file

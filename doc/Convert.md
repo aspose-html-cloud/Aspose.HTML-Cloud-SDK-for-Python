@@ -21,6 +21,7 @@ Possible conversions:
 | **is_url**        | bool                                      | Source is URL                               |
 | **options**       | [ConversionOptions](ConversionOptions.md) | Conversion options                          |
 | **storage_name**  | str                                       | Storage name                                |
+| **pdf_metadata**  | [PdfMetadata](PdfMetadata.md)             | PDF /Info metadata (only used when target is PDF) (optional) |
 
 ### 
 

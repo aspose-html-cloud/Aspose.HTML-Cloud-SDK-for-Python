@@ -44,7 +44,8 @@ class ConversionRequest(object):
         'storage_name': 'str',
         'resources': 'list[str]',
         'output_file': 'str',
-        'options': 'dict(str, str)'
+        'options': 'dict(str, str)',
+        'pdf_metadata': 'PdfMetadata'
     }
 
     attribute_map = {
@@ -52,15 +53,17 @@ class ConversionRequest(object):
         'storage_name': 'storageName',
         'resources': 'resources',
         'output_file': 'outputFile',
-        'options': 'options'
+        'options': 'options',
+        'pdf_metadata': 'pdfMetadata'
     }
 
-    def __init__(self, input_path=None, storage_name=None, resources=None, output_file=None, options=None):  # noqa: E501
+    def __init__(self, input_path=None, storage_name=None, resources=None, output_file=None, options=None, pdf_metadata=None):  # noqa: E501
         self._input_path = None
         self._storage_name = None
         self._resources = None
         self._output_file = None
         self._options = None
+        self._pdf_metadata = None
         self.discriminator = None
         self.input_path = input_path
         if storage_name is not None:
@@ -71,6 +74,8 @@ class ConversionRequest(object):
             self.output_file = output_file
         if options is not None:
             self.options = options
+        if pdf_metadata is not None:
+            self.pdf_metadata = pdf_metadata
 
     @property
     def input_path(self):
@@ -178,6 +183,30 @@ class ConversionRequest(object):
         """
 
         self._options = options
+
+    @property
+    def pdf_metadata(self):
+        """Gets the pdf_metadata of this ConversionRequest.  # noqa: E501
+
+        PDF document information (/Info dictionary) metadata applied to the
+        produced PDF file. Only meaningful when the conversion target is PDF;
+        ignored by the server for other output formats.
+
+        :return: The pdf_metadata of this ConversionRequest.  # noqa: E501
+        :rtype: PdfMetadata
+        """
+        return self._pdf_metadata
+
+    @pdf_metadata.setter
+    def pdf_metadata(self, pdf_metadata):
+        """Sets the pdf_metadata of this ConversionRequest.
+
+
+        :param pdf_metadata: The pdf_metadata of this ConversionRequest.  # noqa: E501
+        :type: PdfMetadata
+        """
+
+        self._pdf_metadata = pdf_metadata
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -39,3 +39,5 @@ from asposehtmlcloud.models.object_exist import ObjectExist
 from asposehtmlcloud.models.storage_exist import StorageExist
 from asposehtmlcloud.models.storage_file import StorageFile
 from asposehtmlcloud.models.conversion_result import ConversionResult
+from asposehtmlcloud.models.conversion_request import ConversionRequest
+from asposehtmlcloud.models.pdf_metadata import PdfMetadata
