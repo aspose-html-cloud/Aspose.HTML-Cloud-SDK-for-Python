@@ -36,13 +36,28 @@ from asposehtmlcloud.api.html_api import HtmlApi
 from asposehtmlcloud.api.storage_api import StorageApi
 
 
+def _credential(*names, default):
+    """Read a credential from the environment, falling back to the literal.
+
+    Lets CI (or the SDK test agent) run the suite against its own subscription
+    without editing this file, while a plain local checkout keeps working.
+    """
+    for name in names:
+        value = os.environ.get(name)
+        if value:
+            return value
+    return default
+
+
 class TestHelper(object):
 
     configuration = Configuration(
         basePath="https://api.aspose.cloud/v4.0",
         authPath="https://api.aspose.cloud/connect/token",
-        apiKey="c8dda7d6445d82635b8797d1c8edd153",
-        appSid="2225baa2-097b-4731-9831-d0d56c28230f",
+        apiKey=_credential("ASPOSE_CLIENT_SECRET", "APP_KEY",
+                           default="c8dda7d6445d82635b8797d1c8edd153"),
+        appSid=_credential("ASPOSE_CLIENT_ID", "APP_SID",
+                           default="2225baa2-097b-4731-9831-d0d56c28230f"),
         debug=True)
 
     client = Client(configuration)
@@ -52,6 +67,11 @@ class TestHelper(object):
     test_src = os.path.dirname(__file__) + '/../testdata/'
     test_dst = os.path.dirname(__file__) + '/../testresult/'
     folder = 'HtmlTestDoc'
+
+    # The result directory is not kept in the repository, so create it once at
+    # import time instead of letting every conversion test fail on a missing
+    # path.
+    os.makedirs(test_dst, exist_ok=True)
 
     @classmethod
     def get_folder(cls):
