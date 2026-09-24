@@ -36,17 +36,20 @@ from asposehtmlcloud.api.html_api import HtmlApi
 from asposehtmlcloud.api.storage_api import StorageApi
 
 
-def _credential(*names, default):
-    """Read a credential from the environment, falling back to the literal.
+def _credential(*names):
+    """Read a credential from the environment.
 
-    Lets CI (or the SDK test agent) run the suite against its own subscription
-    without editing this file, while a plain local checkout keeps working.
+    Credentials are never stored in the repository. Set ASPOSE_CLIENT_ID and
+    ASPOSE_CLIENT_SECRET (or the APP_SID / APP_KEY aliases) before running the
+    suite; the SDK test agent does this automatically.
     """
     for name in names:
         value = os.environ.get(name)
         if value:
             return value
-    return default
+    raise RuntimeError(
+        "Missing Aspose Cloud credentials: set one of %s in the environment."
+        % " / ".join(names))
 
 
 class TestHelper(object):
@@ -54,10 +57,8 @@ class TestHelper(object):
     configuration = Configuration(
         basePath="https://api.aspose.cloud/v4.0",
         authPath="https://api.aspose.cloud/connect/token",
-        apiKey=_credential("ASPOSE_CLIENT_SECRET", "APP_KEY",
-                           default="c8dda7d6445d82635b8797d1c8edd153"),
-        appSid=_credential("ASPOSE_CLIENT_ID", "APP_SID",
-                           default="2225baa2-097b-4731-9831-d0d56c28230f"),
+        apiKey=_credential("ASPOSE_CLIENT_SECRET", "APP_KEY"),
+        appSid=_credential("ASPOSE_CLIENT_ID", "APP_SID"),
         debug=True)
 
     client = Client(configuration)
