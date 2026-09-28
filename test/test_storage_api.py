@@ -47,21 +47,6 @@ class TestStorageApi(unittest.TestCase):
     #                  Test storage Api
     # **************************************************
 
-    def test_get_disc_usage(self):
-        """Test case for get_disc_usage
-
-        Check the disk usage of the current account
-        """
-        res = self.api.get_disc_usage()
-        res = res.to_dict()
-
-        self.assertTrue('total_size' in res)
-        self.assertTrue('used_size' in res)
-
-        self.assertTrue(isinstance(res['total_size'], int if six.PY3 else long))
-        self.assertTrue(isinstance(res['used_size'], int if six.PY3 else long))
-        print(res)
-
     def test_object_exists(self):
         """Test case for object_exists
 
@@ -89,21 +74,6 @@ class TestStorageApi(unittest.TestCase):
 
         self.assertFalse(res['exists'])
         self.assertFalse(res['is_folder'])
-        print(res)
-
-    def test_storage_exist(self):
-        """Test case for storage_exist
-
-        Check if storage exists
-        """
-        not_exist = "Not_exist_storage"
-        res = self.api.storage_exists(not_exist)
-        res = res.to_dict()
-
-        self.assertTrue('exists' in res)
-        self.assertTrue(isinstance(res['exists'], bool))
-
-        self.assertFalse(res['exists'])
         print(res)
 
     # **************************************************

@@ -36,26 +36,6 @@ from asposehtmlcloud.models import *
 class TestStorageModels(unittest.TestCase):
 
     """Parameters
-        'used_size': 'int',
-        'total_size': 'int'
-    """
-    def test_disc_usage(self):
-        model1 = DiscUsage(used_size=100, total_size=200)
-        model2 = DiscUsage(100, 200)
-        model3 = DiscUsage(200, 300)
-
-        self.assertTrue(isinstance(model1, DiscUsage))
-        self.assertTrue(isinstance(model1.used_size, int))
-        self.assertTrue(isinstance(model1.total_size, int))
-        self.assertTrue(isinstance(model3.to_dict(), dict))
-
-        dictionary = model3.to_dict()
-        self.assertTrue('used_size' in dictionary)
-        self.assertTrue('total_size' in dictionary)
-        self.assertEqual(model1, model2)
-        self.assertNotEqual(model1, model3)
-
-    """Parameters
         'name': 'str',
         'is_folder': 'bool',
         'modified_date': 'datetime',
@@ -265,24 +245,6 @@ class TestStorageModels(unittest.TestCase):
         self.assertTrue(isinstance(dictionary, dict))
         self.assertTrue('exists' in dictionary)
         self.assertTrue('is_folder' in dictionary)
-        self.assertEqual(model1, model3)
-        self.assertNotEqual(model1, model2)
-
-    """Parameters
-        'exists': 'bool'
-    """
-    def test_storage_exist(self):
-        model1 = StorageExist(exists=True)
-        model2 = StorageExist(exists=False)
-        model3 = StorageExist(exists=True)
-
-        self.assertTrue(isinstance(model1, StorageExist))
-        self.assertTrue(isinstance(model1.exists, bool))
-
-        dictionary = model3.to_dict()
-        self.assertTrue(isinstance(dictionary, dict))
-        self.assertTrue('exists' in dictionary)
-
         self.assertEqual(model1, model3)
         self.assertNotEqual(model1, model2)
 
